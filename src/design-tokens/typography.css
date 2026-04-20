@@ -1,0 +1,182 @@
+/**
+ * TYPOGRAPHY TOKENS
+ *
+ * Source: Figma "DS2 - Mathspace - 2025" — node 8:399 (Typography page)
+ * Variable collection: "Shared Typography" — Mode: Desktop (single mode)
+ *
+ * DO NOT use these tokens for responsive/viewport scaling — that lives at the
+ * component level via Default/Small/Large size variants, not here.
+ *
+ * ─── Font families ────────────────────────────────────────────────────────────
+ *
+ *   --font-heading   Gilroy ExtraBold    Teacher UI headings (brand)
+ *   --font-body      Proxima Nova        UI body copy, labels (both audiences)
+ *   --font-milo      Playpen Sans        Student voice / Milo character moments
+ *   --font-math      KaTeX_Main          Math expressions (used by KaTeX renderer)
+ *
+ * ─── Scale naming ─────────────────────────────────────────────────────────────
+ *
+ *   --type-{family}-{size}-{property}
+ *
+ *   Family:   heading | body | label | milo | math
+ *   Size:     xl | l | (base, no suffix) | s | xs   (+ xxl for math only)
+ *   Property: size | line-height
+ *   Weight:   defined per-family (not per-size — weight is a style choice, not scale)
+ *
+ * ─── Philosophy ───────────────────────────────────────────────────────────────
+ *
+ *   Heading level (h1–h6) = document structure + accessibility = NEVER drives size.
+ *   Visual size = component context + available space = controlled via CSS class.
+ *
+ *   Use the Text component's `as` prop for semantics, `style` prop for visuals:
+ *     <Text as="h2" style="heading-m">Section title</Text>
+ *     <Text as="h2" style="heading-xs">Compact widget title</Text>
+ *   Both are semantically h2; both are visually correct for their context.
+ */
+
+:root {
+
+  /* ════ Font families ════ */
+
+  /* Figma style group: Headings */
+  --font-heading: 'Gilroy', 'Gilroy ExtraBold', sans-serif;
+
+  /* Figma style group: Body + Label */
+  --font-body: 'Proxima Nova', 'ProximaNova', sans-serif;
+
+  /* Figma style group: Milo — student character/voice */
+  --font-milo: 'Playpen Sans', cursive;
+
+  /* Figma style group: Math — used by KaTeX rendering engine */
+  --font-math: 'KaTeX_Main', 'Times New Roman', serif;
+
+
+  /* ════ Font weights ════ */
+
+  --font-weight-regular:    400;  /* Proxima Nova Regular, Playpen Sans Regular     */
+  --font-weight-medium:     500;  /* Proxima Nova Medium (labels)                   */
+  --font-weight-semibold:   600;  /* Proxima Nova Semibold (-Strong variants), Playpen Sans SemiBold */
+  --font-weight-extrabold:  800;  /* Gilroy ExtraBold (all headings)                */
+
+
+  /* ════ Heading scale — Gilroy ExtraBold ════
+     Figma text styles: Headings/Heading {XL|L|M|S|XS}
+     Line-heights are tight (optical, not leading-based) */
+
+  --type-heading-xl-size:        56px;
+  --type-heading-xl-line-height: 62px;   /* +6px */
+
+  --type-heading-l-size:         32px;
+  --type-heading-l-line-height:  38px;   /* +6px */
+
+  --type-heading-m-size:         28px;
+  --type-heading-m-line-height:  34px;   /* +6px */
+
+  --type-heading-s-size:         20px;
+  --type-heading-s-line-height:  24px;   /* +4px */
+
+  --type-heading-xs-size:        16px;
+  --type-heading-xs-line-height: 20px;   /* +4px */
+
+
+  /* ════ Body scale — Proxima Nova ════
+     Figma text styles: Body/Body {XL|L|(base)|S|XS}
+     Regular(400) and Strong/Semibold(600) share the same scale. */
+
+  --type-body-xl-size:        20px;
+  --type-body-xl-line-height: 26px;   /* +6px */
+
+  --type-body-l-size:         18px;
+  --type-body-l-line-height:  24px;   /* +6px */
+
+  --type-body-size:           16px;
+  --type-body-line-height:    22px;   /* +6px */
+
+  --type-body-s-size:         14px;
+  --type-body-s-line-height:  18px;   /* +4px */
+
+  --type-body-xs-size:        12px;
+  --type-body-xs-line-height: 16px;   /* +4px */
+
+
+  /* ════ Label scale — Proxima Nova ════
+     Figma text styles: Label/Label {L|(base)|S|XS}
+     Labels are tight: line-height === font-size (no leading).
+     Used for UI controls, badges, tabs, captions inside components. */
+
+  --type-label-l-size:        18px;
+  --type-label-l-line-height: 18px;
+
+  --type-label-size:          16px;
+  --type-label-line-height:   16px;
+
+  --type-label-s-size:        14px;
+  --type-label-s-line-height: 14px;
+
+  --type-label-xs-size:       12px;
+  --type-label-xs-line-height:12px;
+
+
+  /* ════ Milo scale — Playpen Sans ════
+     Figma text style group: Milo/
+     Student character voice. Shares the same numeric scale as Headings + Body.
+     Used for Milo speech, encouragement messages, student-facing narrative copy.
+     Regular(400) and Strong/SemiBold(600). */
+
+  /* Milo Headings (matches Heading scale) */
+  --type-milo-heading-xl-size:        56px;
+  --type-milo-heading-xl-line-height: 62px;
+
+  --type-milo-heading-l-size:         32px;
+  --type-milo-heading-l-line-height:  38px;
+
+  --type-milo-heading-m-size:         28px;
+  --type-milo-heading-m-line-height:  34px;
+
+  /* Milo Body (matches Body scale) */
+  --type-milo-xl-size:        20px;
+  --type-milo-xl-line-height: 26px;
+
+  --type-milo-l-size:         18px;
+  --type-milo-l-line-height:  24px;
+
+  --type-milo-size:           16px;
+  --type-milo-line-height:    22px;
+
+  --type-milo-s-size:         14px;
+  --type-milo-s-line-height:  18px;
+
+  --type-milo-xs-size:        12px;
+  --type-milo-xs-line-height: 16px;
+
+
+  /* ════ Math scale — KaTeX_Main ════
+     Figma text style group: Math/MathBody {XXL|XL|L|(base)|S|XS}
+     Used for inline/block math expressions rendered by KaTeX.
+     These sizes are passed as KaTeX fontSize options, not applied directly to DOM. */
+
+  --type-math-xxl-size:        24px;
+  --type-math-xxl-line-height: 30px;
+
+  --type-math-xl-size:         20px;
+  --type-math-xl-line-height:  26px;
+
+  --type-math-l-size:          18px;
+  --type-math-l-line-height:   24px;
+
+  --type-math-size:            16px;
+  --type-math-line-height:     22px;
+
+  --type-math-s-size:          14px;
+  --type-math-s-line-height:   18px;
+
+  --type-math-xs-size:         12px;
+  --type-math-xs-line-height:  16px;
+
+
+  /* ════ Letter spacing ════
+     All Figma styles specify letterSpacing: 0.
+     Defined here explicitly so overrides are intentional. */
+
+  --type-letter-spacing-default: 0;
+}

@@ -1,0 +1,249 @@
+/**
+ * Text styles
+ *
+ * Each class maps to a Figma text style. Applied via the Text component's
+ * `style` prop — completely decoupled from the HTML element used.
+ *
+ * Pattern:
+ *   .text-{family}-{size}            Regular/default weight
+ *   .text-{family}-{size}--strong    Heavier weight variant
+ *
+ * Voice (font family override):
+ *   .text--voice-milo                Switches to Playpen Sans (student voice)
+ *   .text--voice-math                Switches to KaTeX_Main
+ *
+ * Component size scaling (Default / Small / Large):
+ *   These classes are intentionally NOT here — component size variants are
+ *   handled within each component's own CSS via the `size` prop.
+ *   Typography tokens stay fixed; components own their density.
+ */
+
+/* ─── Base reset ─────────────────────────────────────────────────────────────
+   All text elements get zero-margin/padding by default so layouts aren't
+   broken by browser heading margins. Spacing is a layout concern, not a
+   typography concern.
+─────────────────────────────────────────────────────────────────────────────── */
+
+.text {
+  margin: 0;
+  padding: 0;
+  letter-spacing: var(--type-letter-spacing-default, 0);
+  font-style: normal;
+}
+
+/* ─── Headings — Gilroy ExtraBold ─────────────────────────────────────────── */
+
+.text-heading-xl {
+  font-family: var(--font-heading);
+  font-size: var(--type-heading-xl-size);
+  line-height: var(--type-heading-xl-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.text-heading-l {
+  font-family: var(--font-heading);
+  font-size: var(--type-heading-l-size);
+  line-height: var(--type-heading-l-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.text-heading-m {
+  font-family: var(--font-heading);
+  font-size: var(--type-heading-m-size);
+  line-height: var(--type-heading-m-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.text-heading-s {
+  font-family: var(--font-heading);
+  font-size: var(--type-heading-s-size);
+  line-height: var(--type-heading-s-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.text-heading-xs {
+  font-family: var(--font-heading);
+  font-size: var(--type-heading-xs-size);
+  line-height: var(--type-heading-xs-line-height);
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* ─── Body — Proxima Nova ─────────────────────────────────────────────────── */
+
+.text-body-xl {
+  font-family: var(--font-body);
+  font-size: var(--type-body-xl-size);
+  line-height: var(--type-body-xl-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-body-xl--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-body-xl-size);
+  line-height: var(--type-body-xl-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-body-l {
+  font-family: var(--font-body);
+  font-size: var(--type-body-l-size);
+  line-height: var(--type-body-l-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-body-l--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-body-l-size);
+  line-height: var(--type-body-l-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-body--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-body-s {
+  font-family: var(--font-body);
+  font-size: var(--type-body-s-size);
+  line-height: var(--type-body-s-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-body-s--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-body-s-size);
+  line-height: var(--type-body-s-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-body-xs {
+  font-family: var(--font-body);
+  font-size: var(--type-body-xs-size);
+  line-height: var(--type-body-xs-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-body-xs--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-body-xs-size);
+  line-height: var(--type-body-xs-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ─── Labels — Proxima Nova, tight line-height ───────────────────────────── */
+
+.text-label-l {
+  font-family: var(--font-body);
+  font-size: var(--type-label-l-size);
+  line-height: var(--type-label-l-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.text-label-l--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-label-l-size);
+  line-height: var(--type-label-l-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-label {
+  font-family: var(--font-body);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.text-label--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-label-s {
+  font-family: var(--font-body);
+  font-size: var(--type-label-s-size);
+  line-height: var(--type-label-s-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.text-label-s--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-label-s-size);
+  line-height: var(--type-label-s-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-label-xs {
+  font-family: var(--font-body);
+  font-size: var(--type-label-xs-size);
+  line-height: var(--type-label-xs-line-height);
+  font-weight: var(--font-weight-medium);
+}
+.text-label-xs--strong {
+  font-family: var(--font-body);
+  font-size: var(--type-label-xs-size);
+  line-height: var(--type-label-xs-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ─── Milo — Playpen Sans (student voice) ────────────────────────────────── */
+
+.text-milo-heading-xl {
+  font-family: var(--font-milo);
+  font-size: var(--type-milo-heading-xl-size);
+  line-height: var(--type-milo-heading-xl-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-milo-heading-xl--strong {
+  font-family: var(--font-milo);
+  font-size: var(--type-milo-heading-xl-size);
+  line-height: var(--type-milo-heading-xl-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-milo-heading-l {
+  font-family: var(--font-milo);
+  font-size: var(--type-milo-heading-l-size);
+  line-height: var(--type-milo-heading-l-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-milo-heading-l--strong {
+  font-family: var(--font-milo);
+  font-size: var(--type-milo-heading-l-size);
+  line-height: var(--type-milo-heading-l-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-milo-heading-m {
+  font-family: var(--font-milo);
+  font-size: var(--type-milo-heading-m-size);
+  line-height: var(--type-milo-heading-m-line-height);
+  font-weight: var(--font-weight-regular);
+}
+.text-milo-heading-m--strong {
+  font-family: var(--font-milo);
+  font-size: var(--type-milo-heading-m-size);
+  line-height: var(--type-milo-heading-m-line-height);
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-milo-xl { font-family: var(--font-milo); font-size: var(--type-milo-xl-size); line-height: var(--type-milo-xl-line-height); font-weight: var(--font-weight-regular); }
+.text-milo-xl--strong { font-family: var(--font-milo); font-size: var(--type-milo-xl-size); line-height: var(--type-milo-xl-line-height); font-weight: var(--font-weight-semibold); }
+.text-milo-l { font-family: var(--font-milo); font-size: var(--type-milo-l-size); line-height: var(--type-milo-l-line-height); font-weight: var(--font-weight-regular); }
+.text-milo-l--strong { font-family: var(--font-milo); font-size: var(--type-milo-l-size); line-height: var(--type-milo-l-line-height); font-weight: var(--font-weight-semibold); }
+.text-milo { font-family: var(--font-milo); font-size: var(--type-milo-size); line-height: var(--type-milo-line-height); font-weight: var(--font-weight-regular); }
+.text-milo--strong { font-family: var(--font-milo); font-size: var(--type-milo-size); line-height: var(--type-milo-line-height); font-weight: var(--font-weight-semibold); }
+.text-milo-s { font-family: var(--font-milo); font-size: var(--type-milo-s-size); line-height: var(--type-milo-s-line-height); font-weight: var(--font-weight-regular); }
+.text-milo-s--strong { font-family: var(--font-milo); font-size: var(--type-milo-s-size); line-height: var(--type-milo-s-line-height); font-weight: var(--font-weight-semibold); }
+.text-milo-xs { font-family: var(--font-milo); font-size: var(--type-milo-xs-size); line-height: var(--type-milo-xs-line-height); font-weight: var(--font-weight-regular); }
+.text-milo-xs--strong { font-family: var(--font-milo); font-size: var(--type-milo-xs-size); line-height: var(--type-milo-xs-line-height); font-weight: var(--font-weight-semibold); }
+
+/* ─── Text colour (inherits from context by default) ─────────────────────── */
+
+.text--on-primary { color: var(--sys-primary-on); }
+.text--on-surface { color: var(--sys-background-on); }
+.text--primary    { color: var(--sys-primary); }
+.text--subtle     { color: var(--sys-outline); }

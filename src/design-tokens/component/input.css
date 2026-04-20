@@ -1,0 +1,51 @@
+/**
+ * Input / Select field design tokens
+ *
+ * Source: Figma "Input" (node 42:6052) and "Dropdown" (node 180:46611)
+ *
+ * Shared between Input and Select components — both use the same
+ * visual container shape and typography.
+ *
+ * DO NOT EDIT BY HAND — re-run against Figma when tokens change.
+ */
+
+:root {
+  /* ─── Spacing ───────────────────────────────────────────── */
+  --input-height:       40px;
+  --input-pad-horiz:    10px;
+  --input-gap:          8px;
+
+  /* ─── Typography ────────────────────────────────────────── */
+  --input-font-size:    16px;
+  --input-font-weight:  500;
+
+  /* ─── Border ────────────────────────────────────────────── */
+  --input-border-width: 1.5px;
+
+  /* ─── Semantic colour aliases ───────────────────────────── */
+  /* Figma: --system/outline/outline → neutral-60 equivalent */
+  --input-border-color:         #93939c;
+  --input-border-color-focus:   var(--sys-primary);
+  --input-border-color-error:   var(--sys-red);
+  --input-border-color-success: var(--sys-green);
+
+  --input-bg:           var(--sys-background, white);
+  --input-bg-error:     var(--sys-red-container-light, #FDEBED);
+  --input-bg-disabled:  var(--sys-neutral-container-light, #F4F5F5);
+  --input-bg-readonly:  var(--sys-neutral-container-light, #F4F5F5);
+
+  --input-text:         var(--sys-background-on);
+  --input-placeholder:  var(--input-border-color);
+
+  /* ─── Focus glow ────────────────────────────────────────── */
+  --input-focus-glow-primary: var(--sys-primary-container);
+  --input-focus-glow-error:   var(--sys-red-container);
+  --input-focus-glow-success: var(--sys-green-container);
+  --input-focus-glow-size: 3px;
+
+  /* ─── Label / hint typography ───────────────────────────── */
+  --input-label-size:  14px;
+  --input-label-weight: 600;
+  --input-help-size:   12px;
+  --input-hint-size:   12px;
+}

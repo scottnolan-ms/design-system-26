@@ -1,0 +1,243 @@
+/**
+ * SYSTEM TOKENS — Semantic Color Layer
+ *
+ * Auto-generated from: _REF/Figma_variable_output/Colours 02 - System.json
+ * DO NOT EDIT BY HAND — run: node scripts/generate-tokens.mjs
+ *
+ * These are the tokens components use directly. Each aliases a --ref-* primitive
+ * so the alias chain matches Figma exactly:
+ *   Component fill → --sys-primary → var(--ref-purple-50) → #5D51AE
+ *
+ * Naming:
+ *   --sys-{role}              for the System group (background, surface, outline)
+ *   --sys-primary-{role}      for the Primary color family
+ *   --sys-{family}-{role}     for all other families (blue, green, red, etc.)
+ *
+ * "role" variants:
+ *   (base)           → the main interactive/brand color
+ *   -on              → foreground color on top of base (text, icons)
+ *   -container       → muted/tonal fill (lower emphasis backgrounds)
+ *   -container-on    → foreground on container
+ *   -container-light → extra-light container (hover states, subtle fills)
+ *   -fixed           → fixed color (does not change between modes)
+ *   -fixed-on        → foreground on fixed
+ *   -fixed-variant   → secondary fixed tone
+ *   -fixed-variant-on→ foreground on fixed variant
+ */
+
+:root {
+
+  /* ════ Primary ════ */
+  --sys-primary-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-primary: var(--ref-purple-50); /* #5D51AE */
+  --sys-primary-container-on: var(--ref-purple-30); /* #3C2C7F */
+  --sys-primary-container: var(--ref-purple-90); /* #D8D4FF */
+  --sys-primary-container-light: var(--ref-purple-95); /* #F1EEFF */
+  --sys-primary-fixed-on: var(--ref-purple-10); /* #200B40 */
+  --sys-primary-fixed: var(--ref-purple-90); /* #D8D4FF */
+  --sys-primary-fixed-variant-on: var(--ref-purple-30); /* #3C2C7F */
+  --sys-primary-fixed-variant: var(--ref-purple-80); /* #A69BF0 */
+
+  /* ════ Neutral ════ */
+  --sys-neutral-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-neutral: var(--ref-neutral-50); /* #5A5A68 */
+  --sys-neutral-container-on: var(--ref-neutral-30); /* #32323C */
+  --sys-neutral-container: var(--ref-neutral-90); /* #DFDFE5 */
+  --sys-neutral-container-light: var(--ref-neutral-98); /* #F4F5F5 */
+  --sys-neutral-fixed-on: var(--ref-neutral-10); /* #19191F */
+  --sys-neutral-fixed: var(--ref-neutral-90); /* #DFDFE5 */
+  --sys-neutral-fixed-variant-on: var(--ref-neutral-30); /* #32323C */
+  --sys-neutral-fixed-variant: var(--ref-neutral-80); /* #B8B8BF */
+
+  /* ════ Silver ════ */
+  --sys-silver-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-silver: var(--ref-silver-40); /* #3D5B6E */
+  --sys-silver-container-on: var(--ref-silver-30); /* #2D4759 */
+  --sys-silver-container: var(--ref-silver-90); /* #DCE6EA */
+  --sys-silver-container-light: var(--ref-silver-95); /* #EFF4F6 */
+  --sys-silver-fixed-on: var(--ref-silver-10); /* #122431 */
+  --sys-silver-fixed: var(--ref-silver-90); /* #DCE6EA */
+  --sys-silver-fixed-variant-on: var(--ref-silver-30); /* #2D4759 */
+  --sys-silver-fixed-variant: var(--ref-silver-80); /* #ACC2CF */
+
+  /* ════ Blue ════ */
+  --sys-blue-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-blue: var(--ref-blue-40); /* #00609C */
+  --sys-blue-container-on: var(--ref-blue-30); /* #004F85 */
+  --sys-blue-container: var(--ref-blue-90); /* #BDE6FF */
+  --sys-blue-container-light: var(--ref-blue-95); /* #E0F2FF */
+  --sys-blue-fixed-on: var(--ref-blue-10); /* #002945 */
+  --sys-blue-fixed: var(--ref-blue-90); /* #BDE6FF */
+  --sys-blue-fixed-variant-on: var(--ref-blue-30); /* #004F85 */
+  --sys-blue-fixed-variant: var(--ref-blue-80); /* #90D5FF */
+
+  /* ════ Turquoise ════ */
+  --sys-turquoise-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-turquoise: var(--ref-turquoise-50); /* #189FAD */
+  --sys-turquoise-container-on: var(--ref-turquoise-30); /* #0B5F68 */
+  --sys-turquoise-container: var(--ref-turquoise-90); /* #A9E8EF */
+  --sys-turquoise-container-light: var(--ref-turquoise-95); /* #D1F3F7 */
+  --sys-turquoise-fixed-on: var(--ref-turquoise-10); /* #00272A */
+  --sys-turquoise-fixed: var(--ref-turquoise-90); /* #A9E8EF */
+  --sys-turquoise-fixed-variant-on: var(--ref-turquoise-30); /* #0B5F68 */
+  --sys-turquoise-fixed-variant: var(--ref-turquoise-80); /* #78D9E3 */
+
+  /* ════ Green ════ */
+  --sys-green-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-green: var(--ref-green-40); /* #087568 */
+  --sys-green-container-on: var(--ref-green-30); /* #005048 */
+  --sys-green-container: var(--ref-green-90); /* #C6F7ED */
+  --sys-green-container-light: var(--ref-green-95); /* #E8FBF6 */
+  --sys-green-fixed-on: var(--ref-green-10); /* #00201B */
+  --sys-green-fixed: var(--ref-green-90); /* #C6F7ED */
+  --sys-green-fixed-variant-on: var(--ref-green-30); /* #005048 */
+  --sys-green-fixed-variant: var(--ref-green-80); /* #86E8D1 */
+
+  /* ════ Red ════ */
+  --sys-red-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-red: var(--ref-red-40); /* #B92435 */
+  --sys-red-container-on: var(--ref-red-30); /* #98001C */
+  --sys-red-container: var(--ref-red-90); /* #FBCFD3 */
+  --sys-red-container-light: var(--ref-red-95); /* #FDEBED */
+  --sys-red-fixed-on: var(--ref-red-10); /* #420008 */
+  --sys-red-fixed: var(--ref-red-90); /* #FBCFD3 */
+  --sys-red-fixed-variant-on: var(--ref-red-30); /* #98001C */
+  --sys-red-fixed-variant: var(--ref-red-80); /* #F8A6AF */
+
+  /* ════ Orange ════ */
+  --sys-orange-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-orange: var(--ref-orange-40); /* #B7510C */
+  --sys-orange-container-on: var(--ref-orange-30); /* #913A00 */
+  --sys-orange-container: var(--ref-orange-90); /* #FFE0C7 */
+  --sys-orange-container-light: var(--ref-orange-95); /* #FFF0E4 */
+  --sys-orange-fixed-on: var(--ref-orange-10); /* #3E1600 */
+  --sys-orange-fixed: var(--ref-orange-90); /* #FFE0C7 */
+  --sys-orange-fixed-variant-on: var(--ref-orange-30); /* #913A00 */
+  --sys-orange-fixed-variant: var(--ref-orange-80); /* #FCBE94 */
+
+  /* ════ Yellow ════ */
+  --sys-yellow-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-yellow: var(--ref-yellow-40); /* #9B6700 */
+  --sys-yellow-container-on: var(--ref-yellow-30); /* #754800 */
+  --sys-yellow-container: var(--ref-yellow-90); /* #FDEBB8 */
+  --sys-yellow-container-light: var(--ref-yellow-95); /* #FFF6DF */
+  --sys-yellow-fixed-on: var(--ref-yellow-10); /* #2D1A00 */
+  --sys-yellow-fixed: var(--ref-yellow-90); /* #FDEBB8 */
+  --sys-yellow-fixed-variant-on: var(--ref-yellow-30); /* #754800 */
+  --sys-yellow-fixed-variant: var(--ref-yellow-80); /* #F8D580 */
+
+  /* ════ Tan ════ */
+  --sys-tan-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-tan: var(--ref-tan-40); /* #736B5B */
+  --sys-tan-container-on: var(--ref-tan-30); /* #595344 */
+  --sys-tan-container: var(--ref-tan-90); /* #F0E4C7 */
+  --sys-tan-container-light: var(--ref-tan-95); /* #F6EFDD */
+  --sys-tan-fixed-on: var(--ref-tan-10); /* #2D2920 */
+  --sys-tan-fixed: var(--ref-tan-90); /* #F0E4C7 */
+  --sys-tan-fixed-variant-on: var(--ref-tan-30); /* #595344 */
+  --sys-tan-fixed-variant: var(--ref-tan-80); /* #DDD0B1 */
+
+  /* ════ System ════ */
+  --sys-background-on: var(--ref-neutral-40); /* #3E3E4C */
+  --sys-background: var(--ref-neutral-100); /* #FFFFFF */
+
+  /* ════ Crimson ════ */
+  --sys-crimson-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-crimson: var(--ref-crimson-40); /* #E60000 */
+  --sys-crimson-container-on: var(--ref-crimson-10); /* #4D0000 */
+  --sys-crimson-container: var(--ref-crimson-90); /* #FFD6D6 */
+  --sys-crimson-container-light: var(--ref-crimson-95); /* #FFEEEE */
+  --sys-crimson-fixed-on: var(--ref-crimson-20); /* #800000 */
+  --sys-crimson-fixed: var(--ref-crimson-90); /* #FFD6D6 */
+  --sys-crimson-fixed-variant-on: var(--ref-crimson-30); /* #B30000 */
+  --sys-crimson-fixed-variant: var(--ref-crimson-80); /* #FFB3B3 */
+
+  /* ════ Flame ════ */
+  --sys-flame-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-flame: var(--ref-flame-neon); /* #FF5500 */
+  --sys-flame-container-on: var(--ref-flame-10); /* #451800 */
+  --sys-flame-container: var(--ref-flame-90); /* #FDDAC1 */
+  --sys-flame-container-on-light: var(--ref-flame-40); /* #B94700 */
+  --sys-flame-container-light: var(--ref-flame-95); /* #FEF0E3 */
+  --sys-flame-fixed-on: var(--ref-flame-30); /* #913400 */
+  --sys-flame-fixed: var(--ref-flame-90); /* #FDDAC1 */
+  --sys-flame-fixed-variant-on: var(--ref-flame-30); /* #913400 */
+  --sys-flame-fixed-variant: var(--ref-flame-80); /* #FCB481 */
+
+  /* ════ Sunshine ════ */
+  --sys-sunshine-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-sunshine: var(--ref-sunshine-20); /* #806600 */
+  --sys-sunshine-container-on: var(--ref-sunshine-10); /* #4D3D00 */
+  --sys-sunshine-container: var(--ref-sunshine-90); /* #FFF2CC */
+  --sys-sunshine-container-light: var(--ref-sunshine-95); /* #FFF9E6 */
+  --sys-sunshine-fixed-on: var(--ref-sunshine-10); /* #4D3D00 */
+  --sys-sunshine-fixed: var(--ref-sunshine-90); /* #FFF2CC */
+  --sys-sunshine-fixed-variant-on: var(--ref-sunshine-20); /* #806600 */
+  --sys-sunshine-fixed-variant: var(--ref-sunshine-80); /* #FFEB99 */
+
+  /* ════ Lime ════ */
+  --sys-lime-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-lime: var(--ref-lime-40); /* #66CC00 */
+  --sys-lime-container-on: var(--ref-lime-20); /* #336600 */
+  --sys-lime-container: var(--ref-lime-90); /* #E6FFCC */
+  --sys-lime-container-light: var(--ref-lime-95); /* #F5FFF0 */
+  --sys-lime-fixed-on: var(--ref-lime-10); /* #1A3300 */
+  --sys-lime-fixed: var(--ref-lime-90); /* #E6FFCC */
+  --sys-lime-fixed-variant-on: var(--ref-lime-30); /* #4D9900 */
+  --sys-lime-fixed-variant: var(--ref-lime-80); /* #CCFF99 */
+
+  /* ════ Mint ════ */
+  --sys-mint-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-mint: var(--ref-mint-40); /* #009F4F */
+  --sys-mint-container-on: var(--ref-mint-20); /* #005A2B */
+  --sys-mint-container: var(--ref-mint-90); /* #B0F6D6 */
+  --sys-mint-container-light: var(--ref-mint-95); /* #D7FBEC */
+  --sys-mint-fixed-on: var(--ref-mint-10); /* #003D1F */
+  --sys-mint-fixed: var(--ref-mint-90); /* #B0F6D6 */
+  --sys-mint-fixed-variant-on: var(--ref-mint-30); /* #007838 */
+  --sys-mint-fixed-variant: var(--ref-mint-80); /* #72EFB5 */
+
+  /* ════ Marine ════ */
+  --sys-marine-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-marine: var(--ref-marine-40); /* #005CE6 */
+  --sys-marine-container-on: var(--ref-marine-20); /* #003080 */
+  --sys-marine-container: var(--ref-marine-90); /* #CCE0FF */
+  --sys-marine-container-light: var(--ref-marine-95); /* #E6F0FF */
+  --sys-marine-fixed-on: var(--ref-marine-10); /* #001A4D */
+  --sys-marine-fixed: var(--ref-marine-90); /* #CCE0FF */
+  --sys-marine-fixed-variant-on: var(--ref-marine-30); /* #0047B3 */
+  --sys-marine-fixed-variant: var(--ref-marine-80); /* #B3D1FF */
+
+  /* ════ Lavender ════ */
+  --sys-lavender-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-lavender: var(--ref-lavender-40); /* #8E00D9 */
+  --sys-lavender-container-on: var(--ref-lavender-30); /* #6B00A3 */
+  --sys-lavender-container: var(--ref-lavender-90); /* #F6E6FF */
+  --sys-lavender-container-light: var(--ref-lavender-95); /* #FCF5FF */
+  --sys-lavender-fixed-on: var(--ref-lavender-10); /* #2E003E */
+  --sys-lavender-fixed: var(--ref-lavender-90); /* #F6E6FF */
+  --sys-lavender-fixed-variant-on: var(--ref-lavender-30); /* #6B00A3 */
+  --sys-lavender-fixed-variant: var(--ref-lavender-80); /* #EDCCFF */
+
+  /* ════ Coral ════ */
+  --sys-coral-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-coral: var(--ref-coral-40); /* #CC4D58 */
+  --sys-coral-container-on: var(--ref-coral-30); /* #A63A46 */
+  --sys-coral-container: var(--ref-coral-90); /* #FBE0E2 */
+  --sys-coral-container-light: var(--ref-coral-95); /* #FFF4F5 */
+  --sys-coral-fixed-on: var(--ref-coral-10); /* #5C1D28 */
+  --sys-coral-fixed: var(--ref-coral-90); /* #FBE0E2 */
+  --sys-coral-fixed-variant-on: var(--ref-coral-30); /* #A63A46 */
+  --sys-coral-fixed-variant: var(--ref-coral-80); /* #F7BBC0 */
+
+  /* ════ Pink ════ */
+  --sys-pink-on: var(--ref-neutral-100); /* #FFFFFF */
+  --sys-pink: var(--ref-pink-40); /* #E60073 */
+  --sys-pink-container-on: var(--ref-pink-10); /* #4D0026 */
+  --sys-pink-container: var(--ref-pink-90); /* #FFE6F0 */
+  --sys-pink-container-light: var(--ref-pink-95); /* #FFF5FA */
+  --sys-pink-fixed-on: var(--ref-pink-10); /* #4D0026 */
+  --sys-pink-fixed: var(--ref-pink-90); /* #FFE6F0 */
+  --sys-pink-fixed-variant-on: var(--ref-pink-30); /* #B3005C */
+  --sys-pink-fixed-variant: var(--ref-pink-80); /* #FFCCE0 */
+}

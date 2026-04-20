@@ -1,0 +1,552 @@
+/**
+ * Button styles
+ *
+ * Two button types, both pill-shaped (border-radius: corner/full = 1000px):
+ *
+ *   variant="default"  → Figma "Button" component (node 16:6249)
+ *                         Proxima Nova Medium 16px, no depth border
+ *
+ *   variant="display"  → Figma "Button-Display" component (node 320:19894)
+ *                         Gilroy ExtraBold 16px, bottom depth border (3D effect)
+ *
+ * Both types share:
+ *   - Pill shape (border-radius: var(--corner-full))
+ *   - Same padding tokens (btn-pad-horiz / btn-pad-vert)
+ *   - Same emphasis × color structure (High / Medium / Outline / Low / Text)
+ *
+ * Layer model:
+ *   .btn               → outer shell: bg, pill, depth border (display only)
+ *   .btn__state-layer  → interaction overlay: padding, gap, icon+label row
+ *   .btn__label        → text label
+ *   .btn__icon         → Icon component (inherits color via currentColor)
+ */
+
+/* ─── Reset ──────────────────────────────────────────────────────────────────── */
+
+.btn {
+  appearance: none;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: stretch;
+  border: none;
+  padding: 0;
+  background: none;
+  outline: none;
+  transition:
+    background-color 120ms ease,
+    box-shadow      120ms ease,
+    border-color    120ms ease,
+    opacity         120ms ease;
+}
+
+/* ─── State layer ─────────────────────────────────────────────────────────────
+   Wraps all content. Padding lives here so the state overlay spans the full
+   clickable area cleanly — mirrors Figma's "state-layer" frame.
+─────────────────────────────────────────────────────────────────────────────── */
+
+.btn__state-layer {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  border-radius: inherit;
+  position: relative;
+  gap: var(--button-btn-gap, 6px);
+  padding: var(--button-btn-pad-vert, 8px) var(--button-btn-pad-horiz, 10px);
+}
+
+/* ─── Label wrapper ───────────────────────────────────────────────────────────
+   Extra vertical padding around the label text matches Figma's "Label" frame.
+─────────────────────────────────────────────────────────────────────────────── */
+
+.btn__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--button-btn-label-pad-vert, 4px) 0;
+  line-height: var(--button-line-height, 16px);
+  font-size: var(--scaling-label-display, 16px);
+  letter-spacing: var(--button-letter-spacing, 0);
+  white-space: nowrap;
+}
+
+/* ─── Shape — BOTH variants are pill ─────────────────────────────────────────
+   Figma variable: corner/full = 1000px
+─────────────────────────────────────────────────────────────────────────────── */
+
+.btn--default,
+.btn--display {
+  border-radius: var(--corner-full, 1000px);
+  overflow: hidden;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────────── */
+
+/* Default: Proxima Nova Medium (Figma variable: button/font = 'Proxima_Nova:Medium') */
+.btn--default .btn__label {
+  font-family: var(--button-font-default, var(--font-body));
+  font-weight: var(--button-font-weight-default, 500);
+}
+
+/* Display: Gilroy ExtraBold (Figma variable: button/font-display) */
+.btn--display .btn__label {
+  font-family: var(--button-font-display, var(--font-heading));
+  font-weight: var(--button-font-weight-display, 800);
+}
+
+/* ─── Depth border — Display variant ONLY ────────────────────────────────────
+   Bottom-only border creates the 3D pressed/depth effect from Figma.
+   Not present on the Default button.
+─────────────────────────────────────────────────────────────────────────────── */
+
+.btn--display.btn--high.btn--primary {
+  border-bottom: var(--button-depth-border-width, 2px) solid var(--sys-primary-container-on);
+}
+.btn--display.btn--medium.btn--primary {
+  border-bottom: var(--button-depth-border-width, 2px) solid var(--sys-primary-container-on);
+}
+
+/* ─── Emphasis × Color: High × Primary ──────────────────────────────────────── */
+
+.btn--high.btn--primary {
+  background-color: var(--sys-primary);
+  color: var(--sys-primary-on);
+}
+
+/* Hover */
+.btn--high.btn--primary:hover:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-primary-on);
+  opacity: 0.08;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Press */
+.btn--high.btn--primary:active:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-primary-on);
+  opacity: 0.16;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Focus */
+.btn--high.btn--primary:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-primary-container-on);
+}
+
+/* ─── Emphasis × Color: Medium × Primary (tonal) ─────────────────────────────── */
+
+.btn--medium.btn--primary {
+  background-color: var(--sys-primary-container);
+  color: var(--sys-primary-container-on);
+}
+
+.btn--medium.btn--primary:hover:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-primary-container-on);
+  opacity: 0.08;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--medium.btn--primary:active:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-primary-container-on);
+  opacity: 0.16;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--medium.btn--primary:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-primary-container-on);
+}
+
+/* ─── Emphasis × Color: Outline × Primary ────────────────────────────────────── */
+
+.btn--outline.btn--primary {
+  background-color: transparent;
+  border: 2px solid var(--sys-primary);
+  color: var(--sys-primary);
+}
+
+.btn--outline.btn--primary:hover:not(:disabled) {
+  background-color: var(--sys-primary-container);
+}
+
+.btn--outline.btn--primary:active:not(:disabled) {
+  background-color: var(--sys-primary-container);
+  border-color: var(--sys-primary-container-on);
+  color: var(--sys-primary-container-on);
+}
+
+.btn--outline.btn--primary:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-primary-container-on);
+}
+
+/* ─── Emphasis × Color: Low × Primary (ghost/icon) ──────────────────────────── */
+
+.btn--low.btn--primary {
+  background-color: transparent;
+  color: var(--sys-primary);
+}
+
+.btn--low.btn--primary:hover:not(:disabled) {
+  background-color: var(--sys-primary-container);
+}
+
+.btn--low.btn--primary:active:not(:disabled) {
+  background-color: var(--sys-primary-container);
+  color: var(--sys-primary-container-on);
+}
+
+.btn--low.btn--primary:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-primary-container-on);
+}
+
+/* ─── Emphasis: Text ──────────────────────────────────────────────────────────── */
+
+.btn--text.btn--primary {
+  background-color: transparent;
+  border: none;
+  color: var(--sys-primary);
+}
+
+.btn--text.btn--primary:hover:not(:disabled) {
+  background-color: var(--sys-primary-container);
+}
+
+.btn--text.btn--primary:active:not(:disabled) {
+  background-color: var(--sys-primary-container);
+  color: var(--sys-primary-container-on);
+}
+
+.btn--text.btn--primary:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-primary-container-on);
+}
+
+/* ─── Neutral colour family ────────────────────────────────────────────────────── */
+
+.btn--high.btn--neutral {
+  background-color: var(--sys-neutral-container-on);
+  color: var(--sys-neutral-on);
+}
+
+.btn--medium.btn--neutral {
+  background-color: var(--sys-neutral-container);
+  color: var(--sys-neutral-container-on);
+}
+
+.btn--outline.btn--neutral {
+  background-color: transparent;
+  border: 2px solid var(--sys-neutral);
+  color: var(--sys-neutral-container-on);
+}
+
+.btn--low.btn--neutral,
+.btn--text.btn--neutral {
+  background-color: transparent;
+  color: var(--sys-neutral-container-on);
+}
+
+/* Neutral — interaction states */
+
+.btn--high.btn--neutral:hover:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-neutral-on);
+  opacity: 0.08;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--high.btn--neutral:active:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-neutral-on);
+  opacity: 0.16;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--high.btn--neutral:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-neutral-container-on);
+}
+
+.btn--medium.btn--neutral:hover:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-neutral-container-on);
+  opacity: 0.08;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--medium.btn--neutral:active:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-neutral-container-on);
+  opacity: 0.16;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--medium.btn--neutral:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-neutral-container-on);
+}
+
+.btn--outline.btn--neutral:hover:not(:disabled) {
+  background-color: var(--sys-neutral-container);
+}
+
+.btn--outline.btn--neutral:active:not(:disabled) {
+  background-color: var(--sys-neutral-container);
+  border-color: var(--sys-neutral-container-on);
+  color: var(--sys-neutral-container-on);
+}
+
+.btn--outline.btn--neutral:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-neutral-container-on);
+}
+
+.btn--low.btn--neutral:hover:not(:disabled),
+.btn--text.btn--neutral:hover:not(:disabled) {
+  background-color: var(--sys-neutral-container);
+}
+
+.btn--low.btn--neutral:active:not(:disabled),
+.btn--text.btn--neutral:active:not(:disabled) {
+  background-color: var(--sys-neutral-container);
+  color: var(--sys-neutral-container-on);
+}
+
+.btn--low.btn--neutral:focus-visible,
+.btn--text.btn--neutral:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-neutral-container-on);
+}
+
+/* ─── Destructive colour family ────────────────────────────────────────────────── */
+
+.btn--medium.btn--destructive {
+  background-color: var(--sys-red-container);
+  color: var(--sys-red-container-on);
+}
+
+.btn--outline.btn--destructive {
+  background-color: transparent;
+  border: 2px solid var(--sys-red);
+  color: var(--sys-red);
+}
+
+.btn--low.btn--destructive,
+.btn--text.btn--destructive {
+  background-color: transparent;
+  color: var(--sys-red);
+}
+
+/* Destructive — interaction states */
+
+.btn--medium.btn--destructive:hover:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-red-container-on);
+  opacity: 0.08;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--medium.btn--destructive:active:not(:disabled) .btn__state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--sys-red-container-on);
+  opacity: 0.16;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.btn--medium.btn--destructive:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-red-container-on);
+}
+
+.btn--outline.btn--destructive:hover:not(:disabled) {
+  background-color: var(--sys-red-container);
+}
+
+.btn--outline.btn--destructive:active:not(:disabled) {
+  background-color: var(--sys-red-container);
+  border-color: var(--sys-red-container-on);
+  color: var(--sys-red-container-on);
+}
+
+.btn--outline.btn--destructive:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-red-container-on);
+}
+
+.btn--low.btn--destructive:hover:not(:disabled),
+.btn--text.btn--destructive:hover:not(:disabled) {
+  background-color: var(--sys-red-container);
+}
+
+.btn--low.btn--destructive:active:not(:disabled),
+.btn--text.btn--destructive:active:not(:disabled) {
+  background-color: var(--sys-red-container);
+  color: var(--sys-red-container-on);
+}
+
+.btn--low.btn--destructive:focus-visible,
+.btn--text.btn--destructive:focus-visible {
+  box-shadow:
+    0 0 0 var(--button-focus-ring-offset, 2px) white,
+    0 0 0 calc(var(--button-focus-ring-offset, 2px) + var(--button-focus-ring-width, 3px))
+      var(--sys-red-container-on);
+}
+
+/* ─── Selected state ──────────────────────────────────────────────────────────── */
+
+.btn--high.btn--primary[data-selected] {
+  background-color: var(--sys-primary-container-on);
+  border-bottom-color: transparent;
+}
+
+/* ─── Disabled ────────────────────────────────────────────────────────────────── */
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+
+/* ─── Per-side padding — icon-aware ──────────────────────────────────────────
+   Icons contribute visual weight on their side. When a side has no icon the
+   horizontal padding is widened to keep the label optically centred.
+
+   Applied independently, this covers all four icon combinations:
+     both icons     → neither class — both sides use btn-pad-horiz (default)
+     no icons       → both classes  — both sides use btn-pad-horiz-no-icon
+     icon left only → btn--no-icon-right — right side widens, left stays narrow
+     icon right only→ btn--no-icon-left  — left side widens, right stays narrow
+
+   Figma token: --button-btn-pad-horiz-no-icon (16px default, vs 10px with icon)
+─────────────────────────────────────────────────────────────────────────────── */
+
+.btn--no-icon-left .btn__state-layer {
+  padding-left: var(--button-btn-pad-horiz-no-icon, 16px);
+}
+
+.btn--no-icon-right .btn__state-layer {
+  padding-right: var(--button-btn-pad-horiz-no-icon, 16px);
+}
+
+/* ─── Icon slot ───────────────────────────────────────────────────────────────── */
+
+.btn__icon {
+  flex-shrink: 0;
+}
+
+/* ─── Size scale ──────────────────────────────────────────────────────────────
+   Each size class overrides the CSS custom properties used by state-layer and
+   label. Because CSS variables inherit through the DOM, setting them on the
+   .btn element makes all descendants pick them up automatically.
+
+   Heights (derived from pad-vert + label-pad-vert + line-height):
+     xs  → 4 + 2 + 16 + 2 + 4  = 28px   dense tables, data rows
+     sm  → 6 + 2 + 16 + 2 + 6  = 32px   compact filters, sidebars
+     md  → 8 + 4 + 16 + 4 + 8  = 40px   standard (default from :root)
+     lg  → 12 + 4 + 16 + 4 + 12 = 48px  form submits, prominent CTAs
+     xl  → 14 + 4 + 20 + 4 + 14 = 56px  hero / landing page CTAs
+
+   Because breakpoints.css may change the :root defaults at certain viewports,
+   an explicit size prop always wins — these element-level properties take
+   precedence over :root via CSS variable inheritance.
+─────────────────────────────────────────────────────────────────────────────── */
+
+/* xs — 28px */
+.btn--xs {
+  --button-btn-pad-vert:          4px;
+  --button-btn-label-pad-vert:    2px;
+  --button-btn-pad-horiz:         6px;
+  --button-btn-pad-horiz-no-icon: 12px;
+  --button-btn-gap:               4px;
+  --scaling-label-display:        12px;
+}
+
+/* sm — 32px */
+.btn--sm {
+  --button-btn-pad-vert:          6px;
+  --button-btn-label-pad-vert:    2px;
+  --button-btn-pad-horiz:         8px;
+  --button-btn-pad-horiz-no-icon: 14px;
+  --button-btn-gap:               4px;
+  --scaling-label-display:        13px;
+}
+
+/* md is the :root default — no class needed */
+
+/* lg — 48px */
+.btn--lg {
+  --button-btn-pad-vert:          12px;
+  --button-btn-label-pad-vert:    4px;
+  --button-btn-pad-horiz:         14px;
+  --button-btn-pad-horiz-no-icon: 20px;
+  --button-btn-gap:               6px;
+  --scaling-label-display:        16px;
+}
+
+/* xl — 56px (hero / landing page) */
+.btn--xl {
+  --button-btn-pad-vert:          14px;
+  --button-btn-label-pad-vert:    4px;
+  --button-btn-pad-horiz:         18px;
+  --button-btn-pad-horiz-no-icon: 26px;
+  --button-btn-gap:               8px;
+  --scaling-label-display:        18px;
+  --button-line-height:           20px;
+}

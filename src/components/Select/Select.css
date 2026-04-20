@@ -1,0 +1,56 @@
+/**
+ * Select (dropdown) styles
+ *
+ * Source: Figma "Dropdown" component (node 180:46611)
+ *
+ * Imports shared field styles from Input.css.
+ * Only Select-specific overrides live here.
+ */
+
+/* ─── Native <select> element ──────────────────────────────────────────────── */
+
+.select__field {
+  /* Strip native browser chrome so we can fully control appearance */
+  appearance: none;
+  -webkit-appearance: none;
+
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  font-family:  var(--font-body);
+  font-size:    var(--input-font-size, 16px);
+  font-weight:  var(--input-font-weight, 500);
+  line-height:  1;
+  color: var(--input-text, var(--sys-background-on));
+  padding: 0; /* reset browser default */
+}
+
+/* Placeholder option — the zero-value disabled option shown when nothing is selected */
+.select__field option[value=""] {
+  color: var(--input-placeholder, #93939c);
+}
+
+.select__field:disabled {
+  cursor: not-allowed;
+}
+
+/* ─── Chevron arrow ────────────────────────────────────────────────────────── */
+
+.select__arrow {
+  flex-shrink: 0;
+  /* Arrow must NOT intercept clicks — the transparent native select handles them */
+  pointer-events: none;
+  color: var(--sys-neutral);
+  transition: transform 200ms ease;
+}
+
+/* Rotate chevron when the control reports open (set via JS on the wrapper) */
+.field__control[data-open] .select__arrow {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,60 @@
+/**
+ * COMPONENT TOKENS — Button
+ *
+ * Source: Figma "Button" (node 16:6249) and "Button-Display" (node 320:19894)
+ *
+ * Figma variable names (using Figma's "/" notation):
+ *   button/btn-pad-horiz              → --button-btn-pad-horiz
+ *   button/btn-pad-vert               → --button-btn-pad-vert
+ *   button/btn-gap                    → --button-btn-gap
+ *   button/btn-label-pad-vert         → --button-btn-label-pad-vert
+ *   button/font                       → Proxima Nova Medium (Default button)
+ *   button/font-display               → Gilroy ExtraBold (Display button)
+ *   corner/full                       → --corner-full
+ *   corner/extra-small                → --corner-extra-small
+ *   shared-typography/scaling-label   → --scaling-label
+ */
+
+:root {
+  /* ── Corner radius ── */
+  --corner-full:        1000px;  /* pill shape — buttons, pills */
+  --corner-extra-small: 4px;     /* chips, tags */
+  --corner-sm:          6px;
+  --corner-md:          8px;
+  --corner-lg:          12px;
+
+  /* ── Button spacing ── */
+  /* Figma variable: button/btn-pad-horiz */
+  --button-btn-pad-horiz:         10px;
+  /* Extra horizontal padding used when button has no icons (label-only) */
+  --button-btn-pad-horiz-no-icon: 16px;
+  /* Figma variable: button/btn-pad-vert */
+  --button-btn-pad-vert:          8px;
+  /* Figma variable: button/btn-gap (between icon and label wrapper) */
+  --button-btn-gap:               6px;
+  /* Figma variable: button/btn-label-pad-vert */
+  --button-btn-label-pad-vert:    4px;
+
+  /* ── Typography ── */
+  /* Default button: Proxima Nova Medium — Figma: var(--button/font) */
+  --button-font-default: var(--font-body);
+  --button-font-weight-default: 500; /* Medium */
+
+  /* Display button: Gilroy ExtraBold — Figma: var(--button/font-display) */
+  --button-font-display: var(--font-heading);
+  --button-font-weight-display: 800; /* ExtraBold */
+
+  /* Figma variable: shared-typography/scaling-label — both button types use 16px */
+  --scaling-label-display: 16px;
+
+  --button-line-height:    16px;
+  --button-letter-spacing: 0;
+
+  /* ── Depth border (Display button only) ── */
+  /* Creates the 3D/pressed effect on the Display variant. Not used on Default. */
+  --button-depth-border-width: 2px;
+
+  /* ── Focus ring ── */
+  --button-focus-ring-width:  3px;
+  --button-focus-ring-offset: 2px;
+}

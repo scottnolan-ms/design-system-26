@@ -1,0 +1,33 @@
+/**
+ * COMPONENT TOKENS — Chip
+ *
+ * Source: Figma "Chips" component (node 25:1855)
+ *
+ * Figma variable names (using Figma's "/" notation):
+ *   chips/chip-gap              → --chip-gap
+ *   chips/chip-pad-horiz        → --chip-pad-horiz
+ *   chips/chip-pad-vert         → --chip-pad-vert
+ *   chips/chip-label-pad-horiz  → --chip-label-pad-horiz
+ *   chips/chip-label-pad-vert   → --chip-label-pad-vert
+ *   chips/chip-label-size       → --chip-label-size
+ *   chips/chip-label-line       → --chip-label-line
+ *   corner/extra-small          → --corner-extra-small (defined in button.css)
+ *
+ * Total chip height: 0 (pad-vert) + 7 (label-pad-vert) + 18 (line-height) + 7 + 0 = 32px
+ */
+
+:root {
+  /* ── Spacing ── */
+  --chip-gap:             0px;   /* gap between icon and label wrapper — Figma: chip-gap */
+  --chip-pad-horiz:       4px;   /* outer horizontal padding — Figma: chip-pad-horiz */
+  --chip-pad-vert:        0px;   /* outer vertical padding — Figma: chip-pad-vert */
+  --chip-label-pad-horiz: 4px;   /* label inner horizontal padding */
+  --chip-label-pad-vert:  7px;   /* label inner vertical padding — gives 32px total height */
+
+  /* ── Typography ── */
+  --chip-label-size:      14px;  /* Figma: chip-label-size → body-s scale */
+  --chip-label-line:      18px;  /* Figma: chip-label-line */
+
+  /* ── Border ── */
+  --chip-border-width:    1px;   /* outline / outline-dashed variants */
+}

@@ -1,0 +1,241 @@
+/**
+ * Input (and shared field) styles
+ *
+ * Source: Figma Input component (node 42:6052)
+ *
+ * The `.field__*` classes are shared with the Select component
+ * (Select.tsx imports this file directly).
+ *
+ * Structure:
+ *   <div class="field">              ← wrapper: label + help + control + hint
+ *     <label class="field__label">
+ *     <p    class="field__help">
+ *     <div  class="field__control"> ← visual bordered container
+ *       [.field__icon]
+ *       <input class="input__field">
+ *       [.field__icon]
+ *     </div>
+ *     <p class="field__hint">
+ *   </div>
+ */
+
+/* ─── Field layout ─────────────────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.field__label {
+  font-family: var(--font-body);
+  font-size:   var(--input-label-size, 14px);
+  font-weight: var(--input-label-weight, 600);
+  line-height: 18px;
+  color: var(--sys-background-on);
+  cursor: default;
+}
+
+/* Required asterisk — purely decorative; aria-required on the input is the real signal */
+.field__required {
+  color: var(--sys-red);
+  margin-left: 2px;
+}
+
+.field__help {
+  font-family: var(--font-body);
+  font-size:   var(--input-help-size, 12px);
+  line-height: 16px;
+  color: var(--sys-neutral);
+  margin: 0;
+}
+
+/* ─── Control (visual bordered container) ──────────────────────────────────── */
+
+.field__control {
+  display: flex;
+  align-items: center;
+  gap: var(--input-gap, 8px);
+  min-height: var(--input-height, 40px);
+  padding: 0 var(--input-pad-horiz, 10px);
+  background-color: var(--input-bg, white);
+  border: var(--input-border-width, 1.5px) solid var(--input-border-color, #93939c);
+  border-radius: var(--corner-extra-small, 4px);
+  transition:
+    border-color    120ms ease,
+    box-shadow      120ms ease,
+    background-color 120ms ease;
+  position: relative;
+}
+
+/* Focus ring — :focus-within fires when the child input/select gains focus */
+.field__control:focus-within {
+  border-color: var(--input-border-color-focus, var(--sys-primary));
+  box-shadow: 0 0 0 var(--input-focus-glow-size, 3px) var(--input-focus-glow-primary);
+  background-color: var(--input-bg, white);
+  outline: none;
+}
+
+/* ─── Validation variants ──────────────────────────────────────────────────── */
+
+/* Error — pink tinted bg + red border; clears bg on focus */
+.field__control--error {
+  border-color: var(--input-border-color-error, var(--sys-red));
+  background-color: var(--input-bg-error, #FDEBED);
+}
+
+.field__control--error:focus-within {
+  border-color: var(--input-border-color-error, var(--sys-red));
+  box-shadow: 0 0 0 var(--input-focus-glow-size, 3px) var(--input-focus-glow-error);
+  background-color: var(--input-bg, white);
+}
+
+/* Success — green border */
+.field__control--success {
+  border-color: var(--input-border-color-success, var(--sys-green));
+}
+
+.field__control--success:focus-within {
+  border-color: var(--input-border-color-success, var(--sys-green));
+  box-shadow: 0 0 0 var(--input-focus-glow-size, 3px) var(--input-focus-glow-success);
+}
+
+/* Disabled — grey bg, muted, blocks all interaction */
+.field__control--disabled {
+  background-color: var(--input-bg-disabled, #F4F5F5);
+  border-color: transparent;
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Readonly — grey bg, cursor indicates non-editable, no focus ring */
+.field__control--readonly {
+  background-color: var(--input-bg-readonly, #F4F5F5);
+  border-color: transparent;
+}
+
+.field__control--readonly:focus-within {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+/* ─── Icon slot (shared by both input and select) ──────────────────────────── */
+
+.field__icon {
+  flex-shrink: 0;
+  color: var(--sys-neutral);
+}
+
+/* ─── Native <input> element ───────────────────────────────────────────────── */
+
+.input__field {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family:  var(--font-body);
+  font-size:    var(--input-font-size, 16px);
+  font-weight:  var(--input-font-weight, 500);
+  line-height:  1;
+  color: var(--input-text, var(--sys-background-on));
+  padding: 0; /* reset browser default */
+}
+
+.input__field::placeholder {
+  color: var(--input-placeholder, #93939c);
+  font-weight: 400;
+  opacity: 1; /* Firefox resets this */
+}
+
+.input__field:disabled {
+  cursor: not-allowed;
+}
+
+/* Password show/hide button inside input */
+.input__toggle {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--sys-neutral);
+  display: flex;
+  align-items: center;
+  border-radius: var(--corner-extra-small, 4px);
+}
+
+.input__toggle:focus-visible {
+  outline: 2px solid var(--sys-primary);
+  outline-offset: 2px;
+}
+
+/* ─── Size scale ──────────────────────────────────────────────────────────────
+   Applied as a class on the outer .field wrapper. Overrides the CSS custom
+   properties used by the control, so all descendants pick them up automatically.
+
+     sm → 32px  compact forms in tables, sidebars, filter panels
+     md → 40px  standard (default)
+     lg → 48px  landing pages, prominent onboarding forms
+─────────────────────────────────────────────────────────────────────────────── */
+
+.field--sm .field__control {
+  min-height: 32px;
+}
+
+.field--sm .input__field,
+.field--sm .select__field {
+  font-size: 14px;
+}
+
+.field--sm .field__label {
+  font-size: 13px;
+}
+
+/* md is the :root default — no class needed */
+
+.field--lg .field__control {
+  min-height: 48px;
+  padding: 0 14px;
+}
+
+.field--lg .input__field,
+.field--lg .select__field {
+  font-size: 18px;
+}
+
+.field--lg .field__label {
+  font-size: 15px;
+}
+
+/* ─── Hint / validation message ────────────────────────────────────────────── */
+
+.field__hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size:   var(--input-hint-size, 12px);
+  line-height: 16px;
+  color: var(--sys-neutral);
+  margin: 0;
+  margin-top: 2px;
+}
+
+.field__hint--error {
+  color: var(--sys-red);
+}
+
+.field__hint--success {
+  color: var(--sys-green);
+}
+
+/* Optical alignment of icon with 12px text */
+.field__hint .icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}

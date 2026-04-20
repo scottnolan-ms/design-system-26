@@ -1,0 +1,98 @@
+/**
+ * Breakpoints & Responsive Defaults
+ *
+ * Two concerns handled here:
+ *
+ *   1. VIEWPORT SCALING (Reason 1)
+ *      Component tokens are overridden at breakpoints so that the default
+ *      (unsized) component is appropriately sized for the viewport.
+ *      An explicit `size` prop on any component always wins — these are
+ *      just defaults that apply when no size prop is set.
+ *
+ *   2. REFERENCE VALUES (for CSS consumers)
+ *      The breakpoints themselves are documented as custom properties.
+ *      They cannot be used inside @media conditions (CSS spec limitation),
+ *      but they can be used in JS (getComputedStyle) or as documentation.
+ *
+ * Breakpoints (aligned to Mathspace device targets):
+ *   mobile     < 640px   — phone
+ *   tablet     640–1023  — tablet (iPad, large phone landscape)
+ *   chromebook 1024–1279 — Chromebook / small laptop (very common in schools)
+ *   desktop    1280–1599 — MacBook Pro, standard monitor
+ *   large      ≥ 1600px  — 27"+ external monitor
+ *
+ * Architecture:
+ *   Components define their sizing via CSS custom properties (e.g. --button-btn-pad-vert).
+ *   Those properties are set on :root as defaults (md size).
+ *   This file overrides them at breakpoints for smaller/larger viewports.
+ *   Explicit .btn--sm / .btn--lg classes set properties on the element directly,
+ *   which inherit-wins over :root — so explicit size always beats responsive default.
+ */
+
+/* ─── Breakpoint reference values ────────────────────────────────────────────
+   Cannot be used in @media directly, but useful for JS and documentation.
+─────────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --bp-mobile:     640px;
+  --bp-tablet:     1024px;
+  --bp-chromebook: 1280px;
+  --bp-desktop:    1600px;
+}
+
+/* ─── Mobile (< 640px) — auto-downsize to sm ─────────────────────────────────
+   On phones the default component size drops one step to conserve space.
+   Any component with an explicit size prop will override these values.
+─────────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 639px) {
+  :root {
+    /* Buttons → sm (32px) */
+    --button-btn-pad-vert:          6px;
+    --button-btn-label-pad-vert:    2px;
+    --button-btn-pad-horiz:         8px;
+    --button-btn-pad-horiz-no-icon: 14px;
+    --button-btn-gap:               4px;
+    --scaling-label-display:        13px;
+
+    /* Chips → sm (24px) */
+    --chip-label-pad-vert:  4px;
+    --chip-label-pad-horiz: 2px;
+    --chip-label-size:      12px;
+    --chip-label-line:      16px;
+    --chip-pad-horiz:       2px;
+
+    /* Inputs → sm (32px) */
+    --input-height:     32px;
+    --input-font-size:  14px;
+    --input-pad-horiz:  8px;
+  }
+}
+
+/* ─── Large desktop (≥ 1600px) — allow components to breathe ────────────────
+   On 27"+ screens, default spacing is slightly more generous.
+   This prevents compact components from looking tiny on high-PPI large monitors.
+─────────────────────────────────────────────────────────────────────────────── */
+
+@media (min-width: 1600px) {
+  :root {
+    /* Buttons → lg (48px) as default on large screens */
+    --button-btn-pad-vert:          12px;
+    --button-btn-label-pad-vert:    4px;
+    --button-btn-pad-horiz:         14px;
+    --button-btn-pad-horiz-no-icon: 20px;
+    --scaling-label-display:        16px;
+
+    /* Chips → lg (40px) */
+    --chip-label-pad-vert:  11px;
+    --chip-label-pad-horiz: 6px;
+    --chip-label-size:      15px;
+    --chip-label-line:      18px;
+    --chip-pad-horiz:       6px;
+
+    /* Inputs → lg (48px) */
+    --input-height:     48px;
+    --input-font-size:  16px;
+    --input-pad-horiz:  14px;
+  }
+}

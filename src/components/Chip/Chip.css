@@ -1,0 +1,329 @@
+/**
+ * Chip styles
+ *
+ * Source: Figma "Chips" component (node 25:1855)
+ *
+ * Shape: --corner-extra-small (4px) — NOT pill. Chips are rectangular with subtle rounding.
+ * Height: 32px total.
+ *
+ * Colour pattern: each .chip--{color} class sets palette variables.
+ * Emphasis rules (.chip--filled, .chip--outline etc.) use those variables generically.
+ * This avoids N×M colour×emphasis selectors.
+ *
+ *   --chip-color-bg         container fill
+ *   --chip-color-fg         container-on text / icon
+ *   --chip-color-border     border colour (outline variants)
+ *   --chip-color-data-fg    base colour for data emphasis (no fill)
+ *   --chip-selected-bg      selected bg (darker — container-on)
+ *   --chip-selected-fg      selected text/icon
+ */
+
+/* ─── Base ────────────────────────────────────────────────────────────────────── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--corner-extra-small, 4px);
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: default;
+  position: relative;
+  transition:
+    background-color 120ms ease,
+    border-color     120ms ease,
+    opacity          120ms ease;
+}
+
+button.chip {
+  cursor: pointer;
+}
+
+button.chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+
+/* ─── State layer ────────────────────────────────────────────────────────────── */
+
+.chip__state-layer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--chip-gap, 0px);
+  padding: var(--chip-pad-vert, 0px) var(--chip-pad-horiz, 4px);
+  border-radius: inherit;
+  position: relative;
+}
+
+/* Hover/press overlays for interactive chips.
+   NOTE: ::after is on .chip (not .chip__state-layer) so it covers the full chip
+   width even when the chip is stretched to fill a grid cell. .chip has
+   position: relative and overflow: hidden which handles clipping + rounding. */
+button.chip:hover:not(:disabled)::after,
+button.chip:active:not(:disabled)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: currentColor;
+}
+
+button.chip:hover:not(:disabled)::after {
+  opacity: 0.08;
+}
+
+button.chip:active:not(:disabled)::after {
+  opacity: 0.16;
+}
+
+/* ─── Label ──────────────────────────────────────────────────────────────────── */
+
+.chip__label {
+  padding:     var(--chip-label-pad-vert, 7px) var(--chip-label-pad-horiz, 4px);
+  font-family: var(--font-body);
+  font-size:   var(--chip-label-size, 14px);
+  line-height: var(--chip-label-line, 18px);
+  font-weight: var(--font-weight-medium, 500);
+  white-space: nowrap;
+}
+
+/* ─── Icon slot ─────────────────────────────────────────────────────────────── */
+
+.chip__icon {
+  flex-shrink: 0;
+}
+
+/* ─── Colour palette variables ───────────────────────────────────────────────── */
+
+.chip--primary {
+  --chip-color-bg:       var(--sys-primary-container);
+  --chip-color-fg:       var(--sys-primary-container-on);
+  --chip-color-border:   var(--sys-primary-container-on);
+  --chip-color-data-fg:  var(--sys-primary);
+  --chip-selected-bg:    var(--sys-primary-container-on);
+  --chip-selected-fg:    var(--sys-primary-on);
+}
+
+.chip--neutral {
+  --chip-color-bg:       var(--sys-neutral-container);
+  --chip-color-fg:       var(--sys-neutral-container-on);
+  --chip-color-border:   var(--sys-neutral-container-on);
+  --chip-color-data-fg:  var(--sys-neutral);
+  --chip-selected-bg:    var(--sys-neutral-container-on);
+  --chip-selected-fg:    var(--sys-neutral-on);
+}
+
+.chip--green {
+  --chip-color-bg:       var(--sys-green-container);
+  --chip-color-fg:       var(--sys-green-container-on);
+  --chip-color-border:   var(--sys-green-container-on);
+  --chip-color-data-fg:  var(--sys-green);
+  --chip-selected-bg:    var(--sys-green-container-on);
+  --chip-selected-fg:    var(--sys-green-on);
+}
+
+.chip--red {
+  --chip-color-bg:       var(--sys-red-container);
+  --chip-color-fg:       var(--sys-red-container-on);
+  --chip-color-border:   var(--sys-red-container-on);
+  --chip-color-data-fg:  var(--sys-red);
+  --chip-selected-bg:    var(--sys-red-container-on);
+  --chip-selected-fg:    var(--sys-red-on);
+}
+
+.chip--orange {
+  --chip-color-bg:       var(--sys-orange-container);
+  --chip-color-fg:       var(--sys-orange-container-on);
+  --chip-color-border:   var(--sys-orange-container-on);
+  --chip-color-data-fg:  var(--sys-orange);
+  --chip-selected-bg:    var(--sys-orange-container-on);
+  --chip-selected-fg:    var(--sys-orange-on);
+}
+
+.chip--blue {
+  --chip-color-bg:       var(--sys-blue-container);
+  --chip-color-fg:       var(--sys-blue-container-on);
+  --chip-color-border:   var(--sys-blue-container-on);
+  --chip-color-data-fg:  var(--sys-blue);
+  --chip-selected-bg:    var(--sys-blue-container-on);
+  --chip-selected-fg:    var(--sys-blue-on);
+}
+
+.chip--silver {
+  --chip-color-bg:       var(--sys-silver-container);
+  --chip-color-fg:       var(--sys-silver-container-on);
+  --chip-color-border:   var(--sys-silver-container-on);
+  --chip-color-data-fg:  var(--sys-silver);
+  --chip-selected-bg:    var(--sys-silver-container-on);
+  --chip-selected-fg:    var(--sys-silver-on);
+}
+
+.chip--turquoise {
+  --chip-color-bg:       var(--sys-turquoise-container);
+  --chip-color-fg:       var(--sys-turquoise-container-on);
+  --chip-color-border:   var(--sys-turquoise-container-on);
+  --chip-color-data-fg:  var(--sys-turquoise);
+  --chip-selected-bg:    var(--sys-turquoise-container-on);
+  --chip-selected-fg:    var(--sys-turquoise-on);
+}
+
+.chip--yellow {
+  --chip-color-bg:       var(--sys-yellow-container);
+  --chip-color-fg:       var(--sys-yellow-container-on);
+  --chip-color-border:   var(--sys-yellow-container-on);
+  --chip-color-data-fg:  var(--sys-yellow);
+  --chip-selected-bg:    var(--sys-yellow-container-on);
+  --chip-selected-fg:    var(--sys-yellow-on);
+}
+
+.chip--tan {
+  --chip-color-bg:       var(--sys-tan-container);
+  --chip-color-fg:       var(--sys-tan-container-on);
+  --chip-color-border:   var(--sys-tan-container-on);
+  --chip-color-data-fg:  var(--sys-tan);
+  --chip-selected-bg:    var(--sys-tan-container-on);
+  --chip-selected-fg:    var(--sys-tan-on);
+}
+
+.chip--crimson {
+  --chip-color-bg:       var(--sys-crimson-container);
+  --chip-color-fg:       var(--sys-crimson-container-on);
+  --chip-color-border:   var(--sys-crimson-container-on);
+  --chip-color-data-fg:  var(--sys-crimson);
+  --chip-selected-bg:    var(--sys-crimson-container-on);
+  --chip-selected-fg:    var(--sys-crimson-on);
+}
+
+.chip--flame {
+  --chip-color-bg:       var(--sys-flame-container);
+  --chip-color-fg:       var(--sys-flame-container-on);
+  --chip-color-border:   var(--sys-flame-container-on);
+  --chip-color-data-fg:  var(--sys-flame);
+  --chip-selected-bg:    var(--sys-flame-container-on);
+  --chip-selected-fg:    var(--sys-flame-on);
+}
+
+.chip--sunshine {
+  --chip-color-bg:       var(--sys-sunshine-container, var(--sys-yellow-container));
+  --chip-color-fg:       var(--sys-sunshine-container-on, var(--sys-yellow-container-on));
+  --chip-color-border:   var(--sys-sunshine-container-on, var(--sys-yellow-container-on));
+  --chip-color-data-fg:  var(--sys-sunshine, var(--sys-yellow));
+  --chip-selected-bg:    var(--sys-sunshine-container-on, var(--sys-yellow-container-on));
+  --chip-selected-fg:    var(--sys-sunshine-on, var(--sys-yellow-on));
+}
+
+/* ─── Emphasis: Filled (Figma "Varient") ─────────────────────────────────────── */
+
+.chip--filled {
+  background-color: var(--chip-color-bg);
+  color: var(--chip-color-fg);
+}
+
+.chip--filled[data-selected] {
+  background-color: var(--chip-selected-bg);
+  color: var(--chip-selected-fg);
+}
+
+/* ─── Emphasis: Outline ──────────────────────────────────────────────────────── */
+
+.chip--outline {
+  background-color: transparent;
+  color: var(--chip-color-fg);
+  box-shadow: inset 0 0 0 var(--chip-border-width, 1px) var(--chip-color-border);
+}
+
+.chip--outline[data-selected] {
+  background-color: var(--chip-selected-bg);
+  color: var(--chip-selected-fg);
+  box-shadow: none;
+}
+
+/* ─── Emphasis: Outline Dashed ───────────────────────────────────────────────── */
+
+/* Dashed border via SVG background-image — consistent cross-browser */
+.chip--outline-dashed {
+  background-color: transparent;
+  color: var(--chip-color-fg);
+  /* box-shadow doesn't support dashed — use outline with offset trick */
+  outline: var(--chip-border-width, 1px) dashed var(--chip-color-border);
+  outline-offset: -1px;
+}
+
+.chip--outline-dashed[data-selected] {
+  background-color: var(--chip-selected-bg);
+  color: var(--chip-selected-fg);
+  outline: none;
+}
+
+/* ─── Emphasis: Data (non-interactive label) ─────────────────────────────────── */
+
+.chip--data {
+  background-color: transparent;
+  color: var(--chip-color-data-fg);
+}
+
+/* ─── Focus ──────────────────────────────────────────────────────────────────── */
+
+button.chip:focus-visible {
+  outline: 2px solid var(--chip-color-border);
+  outline-offset: 2px;
+}
+
+/* ─── Size scale ──────────────────────────────────────────────────────────────
+   Heights (label-pad-vert × 2 + label-line-height):
+     sm  →  4 + 16 +  4 = 24px  table cells, dense filter bars
+     md  →  7 + 18 +  7 = 32px  standard (default)
+     lg  → 11 + 18 + 11 = 40px  landing page tags, hero labels
+─────────────────────────────────────────────────────────────────────────────── */
+
+/* sm — 24px */
+.chip--sm {
+  --chip-label-pad-vert:  4px;
+  --chip-label-pad-horiz: 2px;
+  --chip-label-size:      12px;
+  --chip-label-line:      16px;
+  --chip-pad-horiz:       2px;
+  --chip-gap:             0px;
+}
+
+/* md is the :root default — no class needed */
+
+/* lg — 40px */
+.chip--lg {
+  --chip-label-pad-vert:  11px;
+  --chip-label-pad-horiz: 6px;
+  --chip-label-size:      15px;
+  --chip-label-line:      18px;
+  --chip-pad-horiz:       6px;
+  --chip-gap:             4px;
+}
+
+/* ─── Forced states — for showcase/demo only ─────────────────────────────────
+   data-demo-hover / data-demo-press: freeze the state-layer overlay at the
+   hover (8%) or press (16%) opacity so the state is visible without interaction.
+   data-demo-focus: paints the focus ring statically.
+─────────────────────────────────────────────────────────────────────────────── */
+
+.chip[data-demo-hover]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: currentColor;
+  opacity: 0.08;
+}
+
+.chip[data-demo-press]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: currentColor;
+  opacity: 0.16;
+}
+
+.chip[data-demo-focus] {
+  outline: 2px solid var(--chip-color-border);
+  outline-offset: 2px;
+}
